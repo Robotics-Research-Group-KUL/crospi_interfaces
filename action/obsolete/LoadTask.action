@@ -1,0 +1,23 @@
+##################################################################
+# Action to load an eTaSL Task together with its input parameters
+##################################################################
+
+
+# Points to an XML-file describing the task at hand
+# This file contains the name of the lua file containing the eTaSL constraints;
+# the definition of the input/output parameters and the input/output topics
+string         taskfile
+
+# Parameters and their value, these will be available in the lua environment
+# before the task-file is loaded
+#TaskParameters input_parameters
+
+string parameters
+---
+
+# In a seperate thread, this action loads the definitions, creates C++ data-structures related 
+# to the constraints. An identifier to this loaded task is returned back to the user.
+uint32  taskid
+ReturnValue retval
+---
+string event

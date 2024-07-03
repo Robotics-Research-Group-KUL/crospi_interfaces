@@ -1,0 +1,17 @@
+################################################
+# Running an eTaSL task
+################################################
+
+# id of the task returned by LoadTask
+uint32 taskid
+---
+# Value of the output parameters
+TaskParameters[] output_parameters
+
+# Name of the event that terminated the controller
+string terminating_event
+---
+
+# Name of an event that is triggered intermediately.
+string event
+

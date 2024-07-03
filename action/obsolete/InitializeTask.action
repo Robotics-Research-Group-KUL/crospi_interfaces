@@ -1,0 +1,26 @@
+##################################################################
+# Action to initialize an already loaded Task
+# Takes care of 
+#   - determining the best starting value of the feature variables
+#   - initializing the solver for running
+##################################################################
+
+# id of the task returned by LoadTask
+uint32           taskid
+
+# initial value of the feature variables, before the initialization
+# are the effective values used when initialize==false
+NumberParameters initial_featurevar
+
+# perform the initialization procedure for the feature variables
+uint8          initialize
+
+# 
+NumberParameters initializer_parameters
+---
+
+# To return error results
+ReturnValue result
+float64 tol_hard_constraints
+float64 tol_soft_constraints
+---

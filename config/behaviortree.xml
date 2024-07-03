@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <Sequence>
+            <Condition ID="CheckBattery"/>
+            <Action ID="OpenGripper"/>
+            <Action ID="ApproachObject"/>
+            <Parallel failure_threshold="1" success_threshold="2">
+                <Action ID="eTaSLLoader" message="Hello" msec="1000"/>
+                <Action ID="eTaSLLoader" message="Second Hello" msec="500"/>
+            </Parallel>
+            <Action ID="CloseGripper"/>
+            <Sequence>
+                <SetBlackboard output_key="event" value="notreached"/>
+                <BlackboardCheckString return_on_mismatch="SUCCESS" value_A="reached" value_B="{event}">
+                    <Action ID="eTaSLLoader" message="reached" msec="1000"/>
+                </BlackboardCheckString>
+                <BlackboardCheckString return_on_mismatch="SUCCESS" value_A="notreached" value_B="{event}">
+                    <Action ID="eTaSLLoader" message="notreached" msec="2000"/>
+                </BlackboardCheckString>
+                <Switch2 case_1="reached" case_2="notreached" variable="{event}">
+                    <Action ID="eTaSLLoader" message="reached" msec="2000"/>
+                    <Action ID="eTaSLLoader" message="notreached" msec="2000"/>
+                    <AlwaysSuccess/>
+                </Switch2>
+            </Sequence>
+        </Sequence>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Action ID="ApproachObject"/>
+        <Condition ID="CheckBattery"/>
+        <Action ID="CloseGripper"/>
+        <Action ID="OpenGripper"/>
+        <Action ID="eTaSLLoader">
+            <input_port name="message">Message to display</input_port>
+            <input_port default="0" name="msec">Duration of the asynchronous action</input_port>
+        </Action>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>
