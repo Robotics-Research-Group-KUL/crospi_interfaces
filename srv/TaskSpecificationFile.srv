@@ -5,6 +5,5 @@
 ##
 
 string file_path
-bool rel_shared_dir
 ---
 bool success
