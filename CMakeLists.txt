@@ -18,6 +18,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
     "msg/Output.msg"
+    "msg/OutputDerivatives.msg"
 	"srv/LuaCmd.srv"
     "action/RunTask.action"
     "msg/TaskParameters.msg"
